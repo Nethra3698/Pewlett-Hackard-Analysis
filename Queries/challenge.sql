@@ -10,6 +10,18 @@ GROUP BY ti.title;
 select * from number_retiring;
 drop table number_retiring;
 
+-- Number of current employees per title
+SELECT ti.title, COUNT(e.emp_no) AS number_of_employees
+INTO current_emp_by_title
+FROM employees as e
+INNER JOIN titles as ti
+ON (e.emp_no = ti.emp_no)
+WHERE ti.to_date='9999-01-01'
+GROUP BY ti.title;
+
+select * from current_emp_by_title;
+drop table current_emp_by_title;
+
 SELECT e.emp_no,
 	e.first_name,
 	e.last_name,
@@ -62,13 +74,6 @@ FROM
 ORDER BY emp_no;
 select * from retiring_info_no_duplicates;
 
--- Number of current employees per title
-SELECT title, COUNT(emp_no) AS number_of_employees
-INTO current_emp_by_title
-FROM retiring_info_no_duplicates 
-GROUP BY title;
-
-select * from current_emp_by_title;
 --Generating list eligible for mentorship
 SELECT e.emp_no,
 	e.first_name,
