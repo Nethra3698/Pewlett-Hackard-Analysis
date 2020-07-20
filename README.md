@@ -2,7 +2,9 @@
 
 ### Introduction to the problem
   The problem mainly revolved around using SQL to sort and dig through large sets of data to procure what is necessary, which in this case is the data about the employees who are going to retire. There are two parts to this problem. The first one is about the number of retiring employees by title and the second is to create a list of employees who are eligible for the mentorship program. 
+  
   To solve the problem he common columns and the relationship between the given tables was taken advantage of. This is the ERD diagram of the main tables that were used for this analysis. 
+  
   ![Figure1](EmployeesDB.png)
 ### Method used 
   - Technical Analysis Deliverable 1- 
