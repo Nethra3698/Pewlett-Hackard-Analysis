@@ -1,15 +1,14 @@
--- Challenge 
+-- Challenge
 -- Employee count by title
-SELECT ti.title, COUNT(e.emp_no)
-INTO no_retiring_by_title
-FROM employees as e
+SELECT ti.title, COUNT(ti.title) as number_of_retirees
+INTO number_retiring
+FROM retirement_info as ri
 INNER JOIN titles as ti
-ON (e.emp_no = ti.emp_no)
-WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+ON (ri.emp_no = ti.emp_no)
 GROUP BY ti.title;
 
-select * from no_retiring_by_title;
-drop table no_retiring_by_title;
+select * from number_retiring;
+drop table number_retiring;
 
 SELECT e.emp_no,
 	e.first_name,
@@ -61,7 +60,15 @@ FROM
  FROM new_retiring_by_title_info
  ) tmp WHERE rn = 1
 ORDER BY emp_no;
+select * from retiring_info_no_duplicates;
 
+-- Number of current employees per title
+SELECT title, COUNT(emp_no) AS number_of_employees
+INTO current_emp_by_title
+FROM retiring_info_no_duplicates 
+GROUP BY title;
+
+select * from current_emp_by_title;
 --Generating list eligible for mentorship
 SELECT e.emp_no,
 	e.first_name,
